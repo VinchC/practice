@@ -1,9 +1,11 @@
 import "./App.css";
+import QuoteForm from "./components/QuoteForm";
 
 function App() {
   return (
     <>
-      <h1>Playground</h1>
+      <p>Quests Form React Intermediary 3.1 & 3.2</p>
+      <QuoteForm />
     </>
   );
 }
