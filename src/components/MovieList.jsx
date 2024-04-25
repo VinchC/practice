@@ -2,6 +2,7 @@ import { useTheme } from "../contexts/MovieContext";
 
 function MovieList() {
   const { movies, setMovies } = useTheme();
+  console.log(movies);
 
   return (
     <>
@@ -17,7 +18,7 @@ function MovieList() {
           </ul>
         </section>
       )}
-      {movies.length < 4 && (
+      {movies.length <= 4 ? (
         <button
           onClick={() =>
             setMovies([
@@ -32,6 +33,8 @@ function MovieList() {
         >
           More
         </button>
+      ) : (
+        <button onClick={() => setMovies(...movies)}>Less</button>
       )}
     </>
   );
