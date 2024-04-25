@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import MovieContext from "../contexts/MovieContext";
+import { useTheme } from "../contexts/MovieContext";
 
 function MovieList() {
-  const { movies, setMovies } = useContext(MovieContext);
+  const { movies, setMovies } = useTheme();
 
   return (
     <>
