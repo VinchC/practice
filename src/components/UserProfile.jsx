@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import UserContext from "../contexts/UserContext";
+import { useTheme } from "../contexts/UserContext";
 
 function UserProfile() {
-  const { isOnline, setIsOnline } = useContext(UserContext);
+  const { isOnline, setIsOnline } = useTheme();
+  console.log(isOnline);
 
   return (
     <>

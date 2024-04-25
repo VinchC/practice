@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { UserProvider } from "./contexts/UserContext";
 
 import App from "./App";
 
@@ -8,6 +9,8 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </StrictMode>
 );
