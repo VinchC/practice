@@ -15,7 +15,9 @@ function CardList() {
         <h3>Apply filters</h3>
         <SearchBar />
         <RaceFilter />
-        <Card cards={cards} />
+        {cards.map((card) => (
+        <Card key={card.id} card={card} />
+      ))}
       </aside>
     </main>
   );
