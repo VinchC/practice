@@ -3,7 +3,7 @@ import Card from "../components/Card";
 
 function RandomCard() {
   const card = useLoaderData();
-  // console.log(cards.data);
+  // console.log(card.data);
   return <Card card={card.data} />;
 }
 
