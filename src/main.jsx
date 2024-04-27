@@ -1,35 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import DisplayModeProvider from "./contexts/theme";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
-import Home from "./pages/Home.jsx";
-import Detail from "./pages/Detail.jsx";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import CardList from './pages/CardList.jsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './index.css'
 
-const routes = createBrowserRouter([
+const router = createBrowserRouter([
   {
+    path: "/",
     element: <App />,
     children: [
       {
         path: "/",
-        element: <Home />,
-        loader: () => fetch("https://dummyjson.com/products"),
-      },
-      {
-        path: "products/:id",
-        element: <Detail />,
-        loader: ({ params }) =>
-          fetch(`https://dummyjson.com/products/${params.id}`),
-      },
-    ],
-  },
-]);
+        element: <CardList />
+      }
+    ]
+  }
+])
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <DisplayModeProvider>
-      <RouterProvider router={routes} />
-    </DisplayModeProvider>
-  </React.StrictMode>
-);
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+)

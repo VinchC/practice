@@ -1,40 +1,103 @@
 #root {
-  min-height: 100vh;
   width: 100%;
   margin: 0 auto;
-  padding: 0;
   text-align: center;
+  --background: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --background-select: linear-gradient(to left, #34495e 3rem, #2c3e50 3rem);
 }
 
-article {
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+aside {
   width: 30%;
-  display: flex;
+  min-height: calc(100vh - 7em);
+  display: flex; 
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
+  border-right: 1px solid white;
 }
 
-article > img {
-  width: 100%;
+/* Reset <select> defaults */
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: inherit;
+  box-shadow: none;
 }
 
-.home  {
-  width: 100%;
-  gap: 20px;
+select::-ms-expand {
+  display: none;
+}
+
+/* Custom Select wrapper */
+.select {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  width: 90%;
+  background: var(--background-select);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.select select {
+  flex: 1;
+  padding: 1em;
+  cursor: pointer;
+}
+.select::after {
+  content: "▼";
+  position: absolute;
+  right: 1rem;
+  top: 0.6rem;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+.select:hover::after {
+  color: #f39c12;
+  -webkit-animation: bounce 0.5s infinite;
+          animation: bounce 0.5s infinite;
 }
 
-.detail  {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+@-webkit-keyframes bounce {
+  25% {
+    transform: translatey(5px);
+  }
+  75% {
+    transform: translatey(-5px);
+  }
 }
 
-.detail > article {
-  width: 80%;
+@keyframes bounce {
+  25% {
+    transform: translatey(5px);
+  }
+  75% {
+    transform: translatey(-5px);
+  }
 }
+
+input {
+  font-size: 16px;
+  line-height: 1.5;
+  border: none;
+  background: #FFFFFF;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='%23838D99' d='M13.22 14.63a8 8 0 1 1 1.41-1.41l4.29 4.29a1 1 0 1 1-1.41 1.41l-4.29-4.29zm-.66-2.07a6 6 0 1 0-8.49-8.49 6 6 0 0 0 8.49 8.49z'></path></svg>");
+  background-repeat: no-repeat;
+  background-position: 10px 10px;
+  background-size: 20px 20px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.08);
+  border-radius: 5px;
+  width: 300px;
+  padding: .5em 1em .5em 2.5em;
+  color: black;
+} 
