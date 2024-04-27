@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 import SearchBar from "../components/SearchBar";
 import RaceFilter from "../components/RaceFilter";
+import { useLoaderData } from "react-router-dom";
+
 // import Card component here
 
 function CardList() {
-  
-  // get data from API here
+  const cards = useLoaderData();
 
   return (
     <main>
@@ -12,8 +14,11 @@ function CardList() {
         <h3>Apply filters</h3>
         <SearchBar />
         <RaceFilter />
+        {cards.map((card) => (
+          <p key={card.id}>{card.name}</p>
+        ))}
       </aside>
-      {/* map cards here */}
+      {console.log(cards)}
     </main>
   );
 }
