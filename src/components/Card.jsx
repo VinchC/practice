@@ -1,19 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Card({ card }) {
   const navigate = useNavigate();
+  const location = useLocation();
   // console.log(card);
   return (
     <>
-      <article>
+      <article onClick={() => navigate(`/card/${card.id}`)}>
         <p>{card.name}</p>
         <p>{card.race}</p>
         {card.card_images.map((image) => (
-          <a key={image.id} onClick={() => navigate(`/card/${card.id}`)}>
-            <img src={image.image_url_small} />
-          </a>
+          <img key={card.id} src={image.image_url_small} />
         ))}
+        {location.pathname !== "/" && (
+          <section>
+            <p>Description : {card.desc}</p>
+            <p>Attaque : {card.atk}</p>
+            <p>Défense : {card.def}</p>
+          </section>
+        )}
       </article>
     </>
   );
