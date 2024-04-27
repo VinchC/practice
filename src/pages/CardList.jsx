@@ -8,11 +8,10 @@ import axios from "axios";
 
 function CardList() {
   const [cards, setCards] = useState([]);
-  const [race, setRace] = useState("");
 
   useEffect(() => {
     axios
-      .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php`)
+      .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=30&offset=0`)
       .then(({ data }) => setCards(data.data));
   });
   // console.log(cards);
@@ -22,7 +21,7 @@ function CardList() {
       <aside>
         <h3>Apply filters</h3>
         <SearchBar />
-        <RaceFilter setRace={setRace} />
+        <RaceFilter />
         {cards.map((card) => (
           <Card key={card.id} card={card} />
         ))}
